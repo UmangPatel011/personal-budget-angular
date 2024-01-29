@@ -9,7 +9,7 @@ body {
 
 div.menu {
     width: 100%;
-    background-color: #4d5791;
+    background-color: #2e3a61;
     height: 44px;
     padding: 0 40px;
 }
@@ -39,7 +39,7 @@ div.menu ul li a:hover  {
 
 div.hero {
     height: 350px;
-    background-color: #f05151;
+    background-color: #2e3a61;
     background-image: url('/pb/bg.png');
     background-size: 400px;
     background-repeat: no-repeat;
@@ -75,7 +75,7 @@ div.hero h2 {
 
 .bottom {
     height: 50px;
-    background-color: #f05151;
+    background-color: #2e3a61;
     padding: 40px;
 }
 
