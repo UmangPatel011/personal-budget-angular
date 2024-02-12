@@ -1,0 +1,111 @@
+<div class="container center">
+
+  <div class="page-area">
+
+            <div class="text-box">
+                <h1>Stay on track</h1>
+                <p>
+                    Do you know where you are spending your money? If you really stop to track it down,
+                    you would get surprised! Proper budget management depends on real data... and this
+                    app will help you with that!
+                </p>
+            </div>
+
+            <div class="text-box">
+                <h1>Keep your cashflow crystal clear</h1>
+                <p>
+                    Effortlessly track your cashflow and gain insights that’ll help you see easy opportunities to save.
+                </p>
+            </div>
+
+            <div class="text-box">
+                <h1>Budget planner</h1>
+                <p>
+                    Use the free printable budget worksheet below to see how your spending compares with the 50/30/20 budget guide.
+                </p>
+                <a href="url">https://www.nerdwallet.com/article/finance/budget-worksheet</a>
+            </div>
+
+            <div class="text-box">
+                <h1>Free Budget Templates</h1>
+                <p>
+                    When it comes to money management, a little time and effort can go a long way. In a business setting, a budget can be an essential tool for measuring performance over time, setting attainable goals, and informing strategic plans.
+                </p>
+                <a href="url">https://www.smartsheet.com/free-google-docs-budget-templates-for-google-docs-google-sheets</a>
+            </div>
+
+
+            <div class="text-box">
+                <h1>Results</h1>
+                <p>
+                    People who stick to a financial plan, budgeting every expense, get out of debt faster!
+                    Also, they to live happier lives... since they expend without guilt or fear...
+                    because they know it is all good and accounted for.
+                </p>
+            </div>
+
+            <div class="text-box">
+                <h1>Chart </h1>
+                <p>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </p>
+            </div>
+
+               <!-- YouTube Video Embed -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/M7ucIl9MGs0" frameborder="0" allowfullscreen></iframe>
+
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        <div class="center">
+            All rights reserved &copy; Umang Patel
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var dataSource = {
+            datasets: [
+                {
+                    data: [30, 350, 90],
+                    backgroundColor: [
+                        '#ffcd56',
+                        '#ff6384',
+                        '#36a2eb',
+                        '#fd6b19',
+                    ],
+                }
+            ],
+            labels: [
+                'Eat out',
+                'Rent',
+                'Groceries',
+            ]
+        };
+
+        function createChart() {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: dataSource
+            });
+        }
+
+        function getBudget() {
+            axios.get('/budget')
+            .then(function (res) {
+                console.log(res);
+                for (var i = 0; i < res.data.myBudget.length; i++) {
+                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                    dataSource.labels[i] = res.data.myBudget[i].title;
+                }
+                createChart();
+            })
+        }
+        getBudget();
+    </script>
