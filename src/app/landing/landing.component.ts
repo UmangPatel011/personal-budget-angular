@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BudgetGridComponent } from "../budget-grid/budget-grid.component";
-import { DonutchartComponent } from '../donutchart/donutchart.component';
+import { DonutchartComponent } from "../dountchart/donutchart.component";
 import { TabViewModule } from 'primeng/tabview';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TableModule } from 'primeng/table';
